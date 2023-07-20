@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+<div class="container wrapper">
+    <h3>registration form</h3>
+   <form>
+        <div class="mb-3">
+            <label for="uname" class="form-label">username</label>
+            <input type="text" name="uname" id="uname" class="form-control">
+            <p id="unameerr" class="error"></p>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">email</label>
+            <input type="txet" name="email" id="email" class="form-control">
+            <p id="emailerr" class="error"></p>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">password</label>
+            <input type="password" name="password" id="password" class="form-control">
+            <p id="pswderr" class="error"></p>
+        </div>
+        <div class="mb-3">
+            <label for="re-password" class="form-label">re password</label>
+            <input type="password" name="re-password" id="re-password" class="form-control">
+            <p id="pswdreerr" class="error"></p>
+        </div>
+        <button type="button" class="btn btn-success" onclick="validate()">register</button>
+   </form>
+</div>
+
+<script>
+    function validate(){
+        let uname = document.getElementById("uname").value;
+        if(uname.length == 0){
+            document.getElementById("unameerr").innerHTML = "username is required";
+        }else{
+            document.getElementById("unameerr").innerHTML = "";
+        }
+        let email = document.getElementById("email").value;
+        if(email.length == 0){
+            document.getElementById("emailerr").innerHTML = "email is required";
+        }else{
+            document.getElementById("emailerr").innerHTML = "";
+            z = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            var m = email.match(z);
+            if(m == null){
+                document.getElementById("emailerr").innerHTML = "invalid email address";
+            }else{
+                document.getElementById("emailerr").innerHTML = "";
+            }
+        }
+        let pswd = document.getElementById("password").value;
+        if(pswd.length == 0){
+            document.getElementById("pswderr").innerHTML = "password is required";
+        }else{
+            document.getElementById("pswderr").innerHTML = "";
+            z = /^[a-zA-Z]\w{3,14}$/;
+            m = pswd.match(z);
+            if(m == null){
+                document.getElementById("pswderr").innerHTML = "The password's first character must be a letter, it must contain at least 4 characters and no more than 15 characters and no characters other than letters, numbers and the underscore may be used";
+
+            }else{
+                document.getElementById("pswderr").innerHTML = "";
+            }
+        }
+        let repswd = document.getElementById("re-password").value;
+        if(pswd != repswd){
+            document.getElementById("pswdreerr").innerHTML = "password does not match";
+        }else{
+            document.getElementById("pswdreerr").innerHTML = "";
+        }
+    }
+</script>
+</body>
+</html>

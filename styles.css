@@ -1,0 +1,11 @@
+*{
+    text-transform: capitalize;
+}
+.wrapper{
+    width: 350px;
+    background-color: rgb(192, 207, 59);
+    padding: 30px;
+}
+.error{
+    color: red;
+}
